@@ -1,15 +1,19 @@
 import random
 
 
-def get_user_guess():
-    try:
-        if is_duplicate_guess:
-            user_guess = int(input('You have previously tried this guess try a new number!: '))
-        else:
-            user_guess = int(input(f"Guess a number from 1-10! You have {guess_count} more guesses remaining: "))
-    except ValueError:
-        print('Incorrect Character! Select a number 1-10')
-    return user_guess
+def get_guess():
+    got_good_guess = False
+    while not got_good_guess:
+        try:
+            if is_duplicate_guess:
+                guess = int(input('You have previously tried this guess try a new number!: '))
+            else:
+                guess = int(input(f"Guess a number from 1-10! You have {guess_count} more guesses remaining: "))
+            if 0 < guess < 11:
+                got_good_guess = True
+        except ValueError:
+            print('Incorrect Character! Select a number 1-10')
+    return guess
 
 
 guess_count = 5
@@ -18,7 +22,7 @@ past_guesses = []
 computer_guess_number = random.randint(1, 10)
 is_duplicate_guess = False
 while attempts < 6:
-    user_guess = get_user_guess()
+    user_guess = get_guess()
     if user_guess == computer_guess_number:
         print('Great guess! you have won!!!')
         break

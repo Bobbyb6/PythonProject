@@ -1,7 +1,5 @@
 # Password/username project
 
-#import pandas as py
-
 
 def get_attempted_username():
     return input('Enter Username: ')
@@ -37,6 +35,3 @@ while attempts < 3:
         attempts = attempts + 1
     if attempts == 3:
         print("Maximum attempt's reached you are locked out see further assistance")
-
-
-# add pandas data or something to input like a proper program
